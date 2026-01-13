@@ -3,13 +3,14 @@
 namespace App\Filament\Resources\Cars\Tables;
 
 use Carbon\Carbon;
-use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteAction;
-use Filament\Actions\DeleteBulkAction;
+use Filament\Tables\Table;
 use Filament\Actions\EditAction;
+use Filament\Actions\ViewAction;
+use Filament\Actions\DeleteAction;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
-use Filament\Tables\Table;
 
 class CarsTable
 {
@@ -139,6 +140,7 @@ class CarsTable
             ->recordActions([
                 EditAction::make(),
                 DeleteAction::make(),
+                ViewAction::make(),
             ])
 
             ->toolbarActions([
