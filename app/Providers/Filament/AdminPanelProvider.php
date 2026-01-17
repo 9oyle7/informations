@@ -40,6 +40,7 @@ class AdminPanelProvider extends PanelProvider
             ->widgets([
                 AccountWidget::class,
                 FilamentInfoWidget::class,
+
             ])
             ->middleware([
                 EncryptCookies::class,
