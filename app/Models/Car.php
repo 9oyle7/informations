@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use App\Models\Maintenance;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Car extends Model
 {
@@ -17,7 +19,7 @@ class Car extends Model
         'inspection_expiry_date',
     ];
 
-        protected $casts = [
+    protected $casts = [
         'insurance_expiry_date' => 'date',
         'registration_expiry_date' => 'date',
         'inspection_expiry_date' => 'date',
@@ -43,5 +45,10 @@ class Car extends Model
         if ($date->lessThanOrEqualTo(now()->addDays(30))) return 'near';
 
         return 'ok';
+    }
+
+    public function maintenances(): HasMany
+    {
+        return $this->hasMany(Maintenance::class);
     }
 }
